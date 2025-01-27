@@ -1,0 +1,104 @@
+[{
+    "id": "myfirstexmple",
+    "title": "Test Campaign",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    "keywords": [
+        "arma ritrovata"
+    ],
+    "charachters": [
+        {
+            "label": "Cuoco",
+            "description": "È un cuoco, cucina. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum",
+            "id": "cook",
+            "icon": "https://fastly.picsum.photos/id/237/200/300.jpg?hmac=TmmQSbShHz9CdQm0NkEjx1Dyh_Y984R9LpNrpvH2D_U",
+            "backgroundImage": "url",
+            "stats": [
+                {
+                    "name": "Health",
+                    "id": "health",
+                    "max": 10,
+                    "starting": 10,
+                    "icon": "https://github.com/dejawho/EscapeWorldAssets/blob/main/images/icons/sanity.png?raw=true",
+                    "depletionEvent": {
+                        "type": "message",
+                        "title": "Morto",
+                        "text": "diamine"
+                    }
+                },
+                {
+                    "name": "Sanity",
+                    "id": "sanity",
+                    "max": 5,
+                    "starting": 3,
+                    "icon": "https://github.com/dejawho/EscapeWorldAssets/blob/main/images/icons/sanity.png?raw=true",
+                    "depletionEvent": {
+                        "type": "message",
+                        "title": "Impazzito",
+                        "text": "mannaggia"
+                    }
+                }
+            ]
+        }
+    ],
+    "poi": [
+        {
+            "code": "abc12345",
+            "requiredRoles": ["cook"],
+            "type": "message",
+            "title": "Pentola",
+            "text": "Quello che all'apparenza sembra un normale vaso è in realtà una pentola in terracotta. Il fatto che sia pieno di terra e fiori è terribilmente fuori posto",
+            "next": [
+                {
+                    "type": "question",
+                    "title": "Pentola",
+                    "text": "Vuoi scavare al suo interno?",
+                    "choices": [
+                        {
+                            "label": "si",
+                            "next": {
+                                "type": "message",
+                                "title": "Ouch",
+                                "text": "Ti tagli con qualcosa di affilato",
+                                "statsModifiers": [
+                                    {
+                                        "statName": "health",
+                                        "value": -1
+                                    }
+                                ],
+                                "next": [{
+                                    "addKeyword": "arma ritrovata",
+                                    "type": "message",
+                                    "text": "Dentro al vaso trovi un pugnale, la probabile arma del delitto. Hai sbloccato la parola chiave [arma ritrovata]"
+                                }]
+                            }
+                        },
+                        {
+                            "label": "no"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "code": "abc12345",
+            "type": "message",
+            "title": "Vaso",
+            "text": "Un semplice vaso di fiori"
+        },
+        {
+            "code": "abc12345",
+            "requiredRoles": ["cook"],
+            "requiredKeywords": ["arma ritrovata"],
+            "type": "message",
+            "title": "Pnetola",
+            "text": "La pentola dove hai trovato l'arma del delitto"
+        },
+        {
+            "code": "abc12345",
+            "requiredKeywords": ["arma ritrovata"],
+            "type": "message",
+            "title": "Vaso",
+            "text": "Il vaso in cui il cuoco ha trovato l'arma del delitto"
+        }
+    ]
+}]
